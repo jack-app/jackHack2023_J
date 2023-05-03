@@ -19,4 +19,10 @@ public class EnemyController : MonoBehaviour
     {
         fishComponent.Move((target.transform.position - transform.position)*speed* Time.deltaTime * Random.Range(-0.1f, 1f)); // 索敵
     }
+
+    // 当たり判定
+    void OnCollisionEnter(Collision collision)
+    {
+      Debug.Log("Hit"); // ログを表示する
+    }
 }
