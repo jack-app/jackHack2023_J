@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
         {
             //Bool型のパラメーターであるBoolswimをTrueにする
             anim.SetBool("Boolswim", true);
-
-            transform.rotate += new Vector3(0, 0, 3);
         }
 
         //もし、上が離れたならなら
