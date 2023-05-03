@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86.Avx;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,25 +12,35 @@ public class PlayerController : MonoBehaviour
     private Animator anim;  //Animatorï¿½ï¿½animï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½Å’ï¿½`ï¿½ï¿½ï¿½ï¿½
 
 
+
+    public Slider hpBar;
+
     //private float speed
     public float speed;
 
     [SerializeField]
-    [Tooltip("Å¬Šp“x(-180`180")]
+    [Tooltip("ï¿½Åï¿½ï¿½pï¿½x(-180ï¿½`180")]
     private float MinAngle;
 
     [SerializeField]
-    [Tooltip("Å‘åŠp“x(-180`180")]
+    [Tooltip("ï¿½Å‘ï¿½pï¿½x(-180ï¿½`180")]
     private float MaxAngle;
 
     [SerializeField]
-    [Tooltip("‰ñ“]‚·‚éƒXƒs[ƒh")]
+    [Tooltip("ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½Xï¿½sï¿½[ï¿½h")]
     private float rotationSpeed = 1;
 
     // Start is called before the first frame update
+    FishComponent fish;
     void Start()
     {
         //speed = 5f;
+        fish = GetComponent<FishComponent>();
+
+        if(hpBar != null)
+        {
+            hpBar.value = 1;
+        }
 
         //ï¿½Ïï¿½animï¿½ÉAAnimatorï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½
         anim = gameObject.GetComponent<Animator>();
@@ -43,6 +55,11 @@ public class PlayerController : MonoBehaviour
         float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
         transform.position = new Vector3(position_x, position_y, 0f);
+
+        if(hpBar != null)
+        {
+            hpBar.value = ((float)fish.hp) / ((float)fish.max_hp);
+        }
 
         //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ã‚ªï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½È‚ï¿½
         if (Input.GetKey("up"))
@@ -100,20 +117,20 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Boolswim", false);
         }
 
-        // ã‰ºƒL[‚Ì“ü—Í‚ğæ“¾
+        // ï¿½ã‰ºï¿½Lï¿½[ï¿½Ì“ï¿½ï¿½Í‚ï¿½ï¿½æ“¾
         float vertical = Input.GetAxis("Vertical");
-        // Œ»İ‚ÌGameObject‚ÌX²•ûŒü‚ÌŠp“x‚ğæ“¾
+        // ï¿½ï¿½ï¿½İ‚ï¿½GameObjectï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŠpï¿½xï¿½ï¿½ï¿½æ“¾
         float currentXAngle = transform.eulerAngles.x;
-        // Œ»İ‚ÌŠp“x‚ª180‚æ‚è‘å‚«‚¢ê‡
+        // ï¿½ï¿½ï¿½İ‚ÌŠpï¿½xï¿½ï¿½180ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ï¿½ê‡
         if (currentXAngle > 180)
         {
-            // ƒfƒtƒHƒ‹ƒg‚Å‚ÍŠp“x‚Í0`360‚È‚Ì‚Å-180`180‚Æ‚È‚é‚æ‚¤‚É•â³
+            // ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Å‚ÍŠpï¿½xï¿½ï¿½0ï¿½`360ï¿½È‚Ì‚ï¿½-180ï¿½`180ï¿½Æ‚È‚ï¿½æ‚¤ï¿½É•â³
             currentXAngle = currentXAngle - 360;
         }
-        // (Œ»İ‚ÌŠp“x‚ªÅ¬Šp“xˆÈã‚©‚ÂƒL[“ü—Í‚ª0–¢–(‰ºƒL[‰Ÿ‰º)) ‚Ü‚½‚Í (Œ»İ‚ÌŠp“x‚ªÅ‘åŠp“xˆÈ‰º‚©‚ÂƒL[“ü—Í‚ª0‚æ‚è‘å‚«‚¢(ãƒL[‰Ÿ‰º))‚Ì
+        // (ï¿½ï¿½ï¿½İ‚ÌŠpï¿½xï¿½ï¿½ï¿½Åï¿½ï¿½pï¿½xï¿½Èã‚©ï¿½ÂƒLï¿½[ï¿½ï¿½ï¿½Í‚ï¿½0ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½)) ï¿½Ü‚ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½İ‚ÌŠpï¿½xï¿½ï¿½ï¿½Å‘ï¿½pï¿½xï¿½È‰ï¿½ï¿½ï¿½ï¿½ÂƒLï¿½[ï¿½ï¿½ï¿½Í‚ï¿½0ï¿½ï¿½ï¿½å‚«ï¿½ï¿½(ï¿½ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½))ï¿½Ìï¿½
         if ((currentXAngle >= MinAngle && vertical > 0) || (currentXAngle <= MaxAngle && vertical < 0))
         {
-            // X²‚ğŠî€‚É‰ñ“]‚³‚¹‚é
+            // Xï¿½ï¿½ï¿½ï¿½ï¿½î€ï¿½É‰ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 

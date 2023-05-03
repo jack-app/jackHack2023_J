@@ -6,11 +6,11 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameObject target;
-    Vector3 velocity;
+    public Vector3 velocity;
     // Start is called before the first frame update
     void Start()
     {
-        velocity = new Vector3(-0.5f, 0f, 0f);
+        //velocity = new Vector3(-0.5f, 0f, 0f);
         target = GameObject.Find("Player");
     }
 

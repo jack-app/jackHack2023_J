@@ -7,9 +7,10 @@ public class FishComponent : MonoBehaviour
     // Start is called before the first frame update
 
     public int hp;
+    public int max_hp;
     void Start()
     {
-        
+        hp = max_hp;
     }
 
     public void Move(Vector3 vec)
