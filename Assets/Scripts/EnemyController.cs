@@ -10,13 +10,13 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     fishComponent = gameObject.GetComponent<FishComponent>();  
+        fishComponent = gameObject.GetComponent<FishComponent>();  
     }
 
     // Update is called once per frame
     public float speed;
     void Update()
     {
-        fishComponent.Move((target.transform.position - transform.position)*speed* Time.deltaTime); // 索敵
+        fishComponent.Move((target.transform.position - transform.position)*speed* Time.deltaTime * Random.Range(-0.1f, 1f)); // 索敵
     }
 }
