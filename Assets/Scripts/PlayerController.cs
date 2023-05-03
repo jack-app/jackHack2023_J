@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,18 @@ public class PlayerController : MonoBehaviour
     //private float speed
     public float speed;
 
+    [SerializeField]
+    [Tooltip("最小角度(-180～180")]
+    private float MinAngle;
+
+    [SerializeField]
+    [Tooltip("最大角度(-180～180")]
+    private float MaxAngle;
+
+    [SerializeField]
+    [Tooltip("回転するスピード")]
+    private float rotationSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
         //変数animに、Animatorコンポーネントを設定する
         anim = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -82,6 +96,23 @@ public class PlayerController : MonoBehaviour
         {
             //Bool型のパラメーターであるBoolswimをFalseにする
             anim.SetBool("Boolswim", false);
+        }
+
+        // 上下キーの入力を取得
+        float vertical = Input.GetAxis("Vertical");
+        // 現在のGameObjectのX軸方向の角度を取得
+        float currentXAngle = transform.eulerAngles.x;
+        // 現在の角度が180より大きい場合
+        if (currentXAngle > 180)
+        {
+            // デフォルトでは角度は0～360なので-180～180となるように補正
+            currentXAngle = currentXAngle - 360;
+        }
+        // (現在の角度が最小角度以上かつキー入力が0未満(下キー押下)) または (現在の角度が最大角度以下かつキー入力が0より大きい(上キー押下))の時
+        if ((currentXAngle >= MinAngle && vertical > 0) || (currentXAngle <= MaxAngle && vertical < 0))
+        {
+            // X軸を基準に回転させる
+            transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 
     }
