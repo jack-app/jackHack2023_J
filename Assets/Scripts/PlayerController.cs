@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    //===== ’è‹`—Ìˆæ =====
-    private Animator anim;  //Animator‚ğanim‚Æ‚¢‚¤•Ï”‚Å’è‹`‚·‚é
+    //===== ï¿½ï¿½`ï¿½Ìˆï¿½ =====
+    private Animator anim;  //Animatorï¿½ï¿½animï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½Å’ï¿½`ï¿½ï¿½ï¿½ï¿½
 
 
     //private float speed
@@ -17,70 +17,72 @@ public class PlayerController : MonoBehaviour
     {
         //speed = 5f;
 
-        //•Ï”anim‚ÉAAnimatorƒRƒ“ƒ|[ƒlƒ“ƒg‚ğİ’è‚·‚é
+        //ï¿½Ïï¿½animï¿½ÉAAnimatorï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½
         anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ˆÚ“®
-        transform.position += new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0f, 0f);
-        transform.position += new Vector3(0f, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0f);
+        //ï¿½Ú“ï¿½
+        float position_x = Mathf.Min(transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed, -8f);
+        float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-        //‚à‚µAã‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        transform.position = new Vector3(position_x, position_y, 0f);
+
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ã‚ªï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½È‚ï¿½
         if (Input.GetKey("up"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Trueï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µAã‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ã‚ªï¿½ï¿½ï¿½ê‚½ï¿½È‚ï¿½È‚ï¿½
         if (Input.GetKeyUp("up"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Falseï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA‰º‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½È‚ï¿½
         if (Input.GetKey("down"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Trueï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA‰º‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½È‚ï¿½È‚ï¿½
         if (Input.GetKeyUp("down"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Falseï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA‰E‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½È‚ï¿½
         if (Input.GetKey("right"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Trueï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA‰E‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½È‚ï¿½È‚ï¿½
         if (Input.GetKeyUp("right"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Falseï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA¶‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½È‚ï¿½
         if (Input.GetKey("left"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Trueï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA¶‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½È‚ï¿½È‚ï¿½
         if (Input.GetKeyUp("left"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolï¿½^ï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½Å‚ï¿½ï¿½ï¿½Boolswimï¿½ï¿½Falseï¿½É‚ï¿½ï¿½ï¿½
             anim.SetBool("Boolswim", false);
         }
 

@@ -6,7 +6,9 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject target;
+    public GameObject bullet;
     FishComponent fishComponent;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +17,27 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     public float speed;
+
+    float timeElapsed;
+    float timeout = 2.0f;
     void Update()
     {
+        timeElapsed += Time.deltaTime;
         fishComponent.Move((target.transform.position - transform.position)*speed* Time.deltaTime * Random.Range(-0.1f, 1f)); // 索敵
+
+    
+        if(timeElapsed > timeout){
+            GameObject bullet_instance = Instantiate(bullet);
+            bullet_instance.transform.parent = gameObject.transform;
+            bullet_instance.transform.localPosition = new Vector3 (0,0,0);
+            timeElapsed = 0.0f;
+        }
     }
 
     // 当たり判定
     void OnCollisionEnter(Collision collision)
     {
-      Debug.Log("Hit"); // ログを表示する
+
+      //Debug.Log("Hit"); // ログを表示する
     }
 }
