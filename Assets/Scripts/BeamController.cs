@@ -10,6 +10,13 @@ public class BeamController : MonoBehaviour
     private Vector3 initialScale; // オブジェクトの初期サイズ
     private Vector3 initialPosition; // オブジェクトの初期位置
     private Vector3 PlayerPosition; // プレイヤーの初期位置
+    private bool isExtending = false;  // 延びているかどうかを示すフラグ
+
+    public GameObject prefab;  // 生成するオブジェクトのプレハブ
+    public float moveSpeed = 1f;  // 動く速度
+
+    private bool isGenerating = false;  // 生成中かどうかを示すフラグ
+    private GameObject generatedObject;  // 生成されたオブジェクトの参照
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +29,19 @@ public class BeamController : MonoBehaviour
     void Update()
     {
         PlayerPosition = Platerobject.transform.position;
-        if (Input.GetKey(KeyCode.Space)) // スペースキーが押されている間
+        // スペースキーが押されたら、延びるフラグをtrueにする
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isExtending = true;
+        }
+
+        // スペースキーが離されたら、延びるフラグをfalseにする
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isExtending = false;
+        }
+
+        if (isExtending) // スペースキーが押されている間
         {
             if(objectToStretch.transform.localScale.x < 24){
                 Vector3 newScale = new Vector3(objectToStretch.transform.localScale.x + scaleSpeed, objectToStretch.transform.localScale.y, objectToStretch.transform.localScale.z); // オブジェクトの幅を拡大
@@ -36,5 +55,27 @@ public class BeamController : MonoBehaviour
             objectToStretch.transform.localScale = initialScale; // オブジェクトのサイズを初期サイズに戻す
             objectToStretch.transform.position = PlayerPosition;// オブジェクトのサイズを初期位置に戻す
         }
+
+
+        if (Input.GetKeyDown(KeyCode.B) && !isGenerating)
+        {
+            generatedObject = Instantiate(prefab, transform.position, Quaternion.identity);
+            isGenerating = true;
+        }
+
+        if (generatedObject != null)
+        {
+            Vector3 position = generatedObject.transform.position;
+            position.x += moveSpeed * Time.deltaTime;
+            generatedObject.transform.position = position;
+            if(position.x > 8)
+            {
+                Destroy(generatedObject);
+            }
+        }
+        else{
+            isGenerating = false;
+        }
     }
+    
 }
