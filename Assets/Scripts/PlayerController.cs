@@ -52,11 +52,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // プレイヤーのx軸が-8fよりは左に行かないようにする
-        float position_x = Mathf.Min(transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed, -8f);
-        float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        // プレイヤーのx軸が-8fよりは右に行かないようにする
+        //float position_x = transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        //float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-        transform.position = new Vector3(position_x, position_y, 0f);
+        //transform.position = new Vector3(position_x, position_y, 0f);
+        fish.Move(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed,
+                    Input.GetAxis("Vertical") * Time.deltaTime * speed));
 
         // hp バーの長さをhpの値に
         if(hpBar != null)
@@ -142,5 +144,10 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 
+    }
+
+    //　カメラから外れた
+    private void OnBecameInvisible() {
+        SceneManager.LoadScene("GameOver");
     }
 }

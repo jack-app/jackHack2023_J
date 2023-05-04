@@ -31,7 +31,7 @@ public class BeamController : MonoBehaviour
         else // スペースキーが押されていない間
         {
             objectToStretch.transform.localScale = initialScale; // オブジェクトのサイズを初期サイズに戻す
-            objectToStretch.transform.position = initialPosition;// オブジェクトのサイズを初期位置に戻す
+            objectToStretch.transform.localPosition = new Vector3(0,0,0);// オブジェクトのサイズを初期位置に戻す
         }
     }
 }

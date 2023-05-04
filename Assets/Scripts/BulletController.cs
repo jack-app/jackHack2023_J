@@ -36,9 +36,13 @@ public class BulletController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 物体が接触している間、常に呼ばれる
         if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"){
+            if(other.gameObject.GetComponent<FishComponent>() == null) return;
             other.gameObject.GetComponent<FishComponent>().hp -= 1;
         }
+    }
+    //　カメラから外れた
+    private void OnBecameInvisible() {
+        Destroy(gameObject);
     }
 }
