@@ -12,7 +12,7 @@ public class BeamController : MonoBehaviour
     private Vector3 PlayerPosition; // プレイヤーの初期位置
     private bool isExtending = false;  // 延びているかどうかを示すフラグ
 
-    public GameObject prefab;  // 生成するオブジェクトのプレハブ
+    public GameObject RomantikBeam;  // 生成するオブジェクトのプレハブ
     public float moveSpeed = 1f;  // 動く速度
 
     private bool isGenerating = false;  // 生成中かどうかを示すフラグ
@@ -43,7 +43,7 @@ public class BeamController : MonoBehaviour
 
         if (isExtending) // スペースキーが押されている間
         {
-            if(objectToStretch.transform.localScale.x < 24){
+            if(objectToStretch.transform.localScale.x < 150){
                 Vector3 newScale = new Vector3(objectToStretch.transform.localScale.x + scaleSpeed, objectToStretch.transform.localScale.y, objectToStretch.transform.localScale.z); // オブジェクトの幅を拡大
                 objectToStretch.transform.localScale = newScale; // オブジェクトのサイズを更新
             }
@@ -59,7 +59,7 @@ public class BeamController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B) && !isGenerating)
         {
-            generatedObject = Instantiate(prefab, transform.position, Quaternion.identity);
+            generatedObject = Instantiate(RomantikBeam, transform.position, Quaternion.identity);
             isGenerating = true;
         }
 
