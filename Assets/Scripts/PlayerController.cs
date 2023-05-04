@@ -144,10 +144,19 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 
+        if(outOfCamera) {outOfCameraTime += Time.deltaTime; }
+        if(outOfCameraTime > 2.0f){ // プレイヤーがカメラ内から2秒以上外れるとゲームオーバー
+            SceneManager.LoadScene("GameOver");
+        }
     }
-
+    bool outOfCamera = false;
+    float outOfCameraTime=0f;
     //　カメラから外れた
     private void OnBecameInvisible() {
-        SceneManager.LoadScene("GameOver");
+        outOfCamera = true;
+    }
+    private void OnBecameVisible() {
+        outOfCameraTime = 0;
+        outOfCamera = false;
     }
 }

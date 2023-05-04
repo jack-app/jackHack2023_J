@@ -21,8 +21,8 @@ public class Beam : MonoBehaviour
         if(other.gameObject.tag == "Enemy"){
             if(other.gameObject.GetComponent<FishComponent>() == null) return;
             other.gameObject.GetComponent<FishComponent>().hp -= 15;
-            Debug.Log(other.gameObject.GetComponent<FishComponent>().hp);
-            Debug.Log("hit");
+            //Debug.Log(other.gameObject.GetComponent<FishComponent>().hp);
+            //Debug.Log("hit");
         }
     }
     private void OnTriggerStay2D(Collider2D other)
