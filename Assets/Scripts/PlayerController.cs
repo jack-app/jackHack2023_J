@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
-    //===== ��`�̈� =====
-    private Animator anim;  //Animator��anim�Ƃ����ϐ��Œ�`����
+    //===== 定義領域 =====
+    private Animator anim;  //Animatorをanimという変数で定義する�
 
 
 
@@ -19,15 +19,15 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     [SerializeField]
-    [Tooltip("�ŏ��p�x(-180�`180")]
+    [Tooltip("最小角度(-180～180")]
     private float MinAngle;
 
     [SerializeField]
-    [Tooltip("�ő�p�x(-180�`180")]
+    [Tooltip("最大角度(-180～180")]
     private float MaxAngle;
 
     [SerializeField]
-    [Tooltip("��]����X�s�[�h")]
+    [Tooltip("回転するスピード")]
     private float rotationSpeed = 1;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             hpBar.value = 1;
         }
 
-        //�ϐ�anim�ɁAAnimator�R���|�[�l���g��ݒ肷��
+        //変数animに、Animatorコンポーネントを設定する
         anim = gameObject.GetComponent<Animator>();
 
     }
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //�ړ�
+
         float position_x = Mathf.Min(transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed, -8f);
         float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
@@ -61,76 +61,76 @@ public class PlayerController : MonoBehaviour
             hpBar.value = ((float)fish.hp) / ((float)fish.max_hp);
         }
 
-        //�����A�オ�����ꂽ��Ȃ�
+        // 現在のGameObjectのX軸方向の角度を取得
         if (Input.GetKey("up"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��True�ɂ���
+            //Bool型のパラメーターであるBoolswimをTrueにする
             anim.SetBool("Boolswim", true);
         }
 
-        //�����A�オ���ꂽ�Ȃ�Ȃ�
+        //もし、上が離れたならなら
         if (Input.GetKeyUp("up"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��False�ɂ���
+            //Bool型のパラメーターであるBoolswimをFalseにする
             anim.SetBool("Boolswim", false);
         }
 
-        //�����A���������ꂽ��Ȃ�
+        //もし、下が押されたらなら
         if (Input.GetKey("down"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��True�ɂ���
+            //Bool型のパラメーターであるBoolswimをTrueにする
             anim.SetBool("Boolswim", true);
         }
 
-        //�����A�������ꂽ�Ȃ�Ȃ�
+        //もし、下が離れたならなら
         if (Input.GetKeyUp("down"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��False�ɂ���
+            //Bool型のパラメーターであるBoolswimをFalseにする
             anim.SetBool("Boolswim", false);
         }
 
-        //�����A�E�������ꂽ��Ȃ�
+        //もし、右が押されたらなら
         if (Input.GetKey("right"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��True�ɂ���
+            //Bool型のパラメーターであるBoolswimをTrueにする
             anim.SetBool("Boolswim", true);
         }
 
-        //�����A�E�����ꂽ�Ȃ�Ȃ�
+        //もし、右が離れたならなら
         if (Input.GetKeyUp("right"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��False�ɂ���
+            //Bool型のパラメーターであるBoolswimをFalseにする
             anim.SetBool("Boolswim", false);
         }
 
-        //�����A���������ꂽ��Ȃ�
+        //もし、左が押されたらなら
         if (Input.GetKey("left"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��True�ɂ���
+            //Bool型のパラメーターであるBoolswimをTrueにする
             anim.SetBool("Boolswim", true);
         }
 
-        //�����A�������ꂽ�Ȃ�Ȃ�
+        //もし、左が離れたならなら
         if (Input.GetKeyUp("left"))
         {
-            //Bool�^�̃p�����[�^�[�ł���Boolswim��False�ɂ���
+            //Bool型のパラメーターであるBoolswimをFalseにする
             anim.SetBool("Boolswim", false);
         }
 
-        // �㉺�L�[�̓��͂��擾
+        // 上下キーの入力を取得
         float vertical = Input.GetAxis("Vertical");
-        // ���݂�GameObject��X�������̊p�x���擾
+         // 現在のGameObjectのX軸方向の角度を取得
         float currentXAngle = transform.eulerAngles.x;
-        // ���݂̊p�x��180���傫���ꍇ
+        // 現在の角度が180より大きい場合
         if (currentXAngle > 180)
         {
-            // �f�t�H���g�ł͊p�x��0�`360�Ȃ̂�-180�`180�ƂȂ�悤�ɕ␳
+            // デフォルトでは角度は0～360なので-180～180となるように補正
             currentXAngle = currentXAngle - 360;
         }
-        // (���݂̊p�x���ŏ��p�x�ȏォ�L�[���͂�0����(���L�[����)) �܂��� (���݂̊p�x���ő�p�x�ȉ����L�[���͂�0���傫��(��L�[����))�̎�
+        // (現在の角度が最小角度以上かつキー入力が0未満(下キー押下)) または (現在の角度が最大角度以下かつキー入力が0より大きい(上キー押下))の時
         if ((currentXAngle >= MinAngle && vertical > 0) || (currentXAngle <= MaxAngle && vertical < 0))
         {
-            // X������ɉ�]������
+            // X軸を基準に回転させる
             transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 
