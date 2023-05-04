@@ -6,6 +6,9 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameObject target;
+
+    [SerializeField]
+    [Tooltip("弾の速度")]
     public Vector3 velocity;
     // Start is called before the first frame update
     void Start()
@@ -17,11 +20,11 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 一定速度で動きつつ ターゲットに追従する
         transform.Translate(velocity + (target.transform.position - transform.position)*0.01f);
     }
 
     void OnCollisionEnter2d(Collision2D col){
-        Debug.Log("collision");
         /*if(gameObject.tag=="Enemy" && col.gameObject.tag == "Ally"){
             col.gameObject.GetComponent<FishComponent>().hp = 0;
         }
@@ -30,16 +33,16 @@ public class BulletController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D col)
     {
         // 物体が接触している間、常に呼ばれる
-        Debug.Log("collision");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 物体が接触している間、常に呼ばれる
         if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"){
+            if(other.gameObject.GetComponent<FishComponent>() == null) return;
             other.gameObject.GetComponent<FishComponent>().hp -= 1;
         }
-        Debug.Log(gameObject.tag);
-
     }
-
+    //　カメラから外れた
+    private void OnBecameInvisible() {
+        Destroy(gameObject);
+    }
 }
