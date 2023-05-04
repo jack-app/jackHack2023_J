@@ -1498,8 +1498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b0c238d0aa9aebeb1e59e80b8df30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
-  max_hp: 30
+  hp: 100
+  max_hp: 100
 --- !u!50 &909108944
 Rigidbody2D:
   serializedVersion: 4
@@ -1872,7 +1872,7 @@ MonoBehaviour:
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
   boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.8
+  gunSpeed: 0.01
 --- !u!114 &1747806693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,7 +2482,7 @@ MonoBehaviour:
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
   boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.8
+  gunSpeed: 0.01
 --- !u!50 &2094590557
 Rigidbody2D:
   serializedVersion: 4

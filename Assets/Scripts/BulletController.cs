@@ -20,8 +20,8 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 一定速度で動きつつ ターゲットに追従する
-        transform.Translate(velocity + (target.transform.position - transform.position)*0.01f);
+        // 一定速度で動く
+        transform.Translate(velocity); //+ (target.transform.position - transform.position)*0.01f);
     }
 
     void OnCollisionEnter2d(Collision2D col){
@@ -37,8 +37,8 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"){
-            if(other.gameObject.GetComponent<FishComponent>() == null) return;
-            other.gameObject.GetComponent<FishComponent>().hp -= 1;
+            if(other.gameObject.GetComponent<FishComponent>() == null) return; // 魚以外なら無視
+            other.gameObject.GetComponent<FishComponent>().hp -= 1; // 魚ならHPを1減らす
         }
     }
     //　カメラから外れた
