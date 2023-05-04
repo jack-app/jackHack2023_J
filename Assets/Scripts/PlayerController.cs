@@ -4,14 +4,14 @@ using UnityEngine;
 using static Unity.Burst.Intrinsics.X86.Avx;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
 
     //===== 定義領域 =====
     private Animator anim;  //Animatorをanimという変数で定義する�
-
-
 
     public Slider hpBar;
 
@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
         if(hpBar != null)
         {
             hpBar.value = ((float)fish.hp) / ((float)fish.max_hp);
+        }
+        
+        if(fish.isDead()){
+            SceneManager.LoadScene("GameOver");
         }
 
         // 現在のGameObjectのX軸方向の角度を取得
