@@ -353,8 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b0c238d0aa9aebeb1e59e80b8df30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
-  max_hp: 30
+  hp: 10
+  max_hp: 10
 --- !u!114 &169720316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209781207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1049999, y: 9.41, z: 2.2672005}
+  m_LocalPosition: {x: 1, y: 9.41, z: 2.2672005}
   m_LocalScale: {x: 0.1, y: 50, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
   boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.8
+  gunSpeed: 10
 --- !u!60 &976068672
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
   boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.8
+  gunSpeed: 0.1
 --- !u!114 &1196993666
 MonoBehaviour:
   m_ObjectHideFlags: 0
