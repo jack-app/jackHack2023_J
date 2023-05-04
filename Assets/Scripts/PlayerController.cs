@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //speed = 5f;
+
+
+        // FishComponentコンポーネントを設定
         fish = GetComponent<FishComponent>();
 
         if(hpBar != null)
@@ -44,23 +47,24 @@ public class PlayerController : MonoBehaviour
 
         //変数animに、Animatorコンポーネントを設定する
         anim = gameObject.GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // プレイヤーのx軸が-8fよりは左に行かないようにする
         float position_x = Mathf.Min(transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed, -8f);
         float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
         transform.position = new Vector3(position_x, position_y, 0f);
 
+        // hp バーの長さをhpの値に
         if(hpBar != null)
         {
             hpBar.value = ((float)fish.hp) / ((float)fish.max_hp);
         }
         
+        // もしプレイヤーが死んでいるならゲームオーバー
         if(fish.isDead()){
             SceneManager.LoadScene("GameOver");
         }
