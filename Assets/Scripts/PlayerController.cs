@@ -1,87 +1,141 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
 
-    //===== ’è‹`—Ìˆæ =====
-    private Animator anim;  //Animator‚ğanim‚Æ‚¢‚¤•Ï”‚Å’è‹`‚·‚é
+    //===== å®šç¾©é ˜åŸŸ =====
+    private Animator anim;  //Animatorã‚’animã¨ã„ã†å¤‰æ•°ã§å®šç¾©ã™ã‚‹ï¿½
 
+    public Slider hpBar;
 
     //private float speed
     public float speed;
 
+    [SerializeField]
+    [Tooltip("æœ€å°è§’åº¦(-180ï½180")]
+    private float MinAngle;
+
+    [SerializeField]
+    [Tooltip("æœ€å¤§è§’åº¦(-180ï½180")]
+    private float MaxAngle;
+
+    [SerializeField]
+    [Tooltip("å›è»¢ã™ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰")]
+    private float rotationSpeed = 1;
+
     // Start is called before the first frame update
+    FishComponent fish;
     void Start()
     {
         //speed = 5f;
+        fish = GetComponent<FishComponent>();
 
-        //•Ï”anim‚ÉAAnimatorƒRƒ“ƒ|[ƒlƒ“ƒg‚ğİ’è‚·‚é
+        if(hpBar != null)
+        {
+            hpBar.value = 1;
+        }
+
+        //å¤‰æ•°animã«ã€Animatorã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¨­å®šã™ã‚‹
         anim = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ˆÚ“®
-        transform.position += new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0f, 0f);
-        transform.position += new Vector3(0f, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0f);
 
-        //‚à‚µAã‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        float position_x = Mathf.Min(transform.position.x  + Input.GetAxis("Horizontal") * Time.deltaTime * speed, -8f);
+        float position_y = transform.position.y + Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        transform.position = new Vector3(position_x, position_y, 0f);
+
+        if(hpBar != null)
+        {
+            hpBar.value = ((float)fish.hp) / ((float)fish.max_hp);
+        }
+        
+        if(fish.isDead()){
+            SceneManager.LoadScene("GameOver");
+        }
+
+        // ç¾åœ¨ã®GameObjectã®Xè»¸æ–¹å‘ã®è§’åº¦ã‚’å–å¾—
         if (Input.GetKey("up"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Trueã«ã™ã‚‹
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µAã‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ã‚‚ã—ã€ä¸ŠãŒé›¢ã‚ŒãŸãªã‚‰ãªã‚‰
         if (Input.GetKeyUp("up"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Falseã«ã™ã‚‹
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA‰º‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ã‚‚ã—ã€ä¸‹ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãªã‚‰
         if (Input.GetKey("down"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Trueã«ã™ã‚‹
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA‰º‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ã‚‚ã—ã€ä¸‹ãŒé›¢ã‚ŒãŸãªã‚‰ãªã‚‰
         if (Input.GetKeyUp("down"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Falseã«ã™ã‚‹
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA‰E‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ã‚‚ã—ã€å³ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãªã‚‰
         if (Input.GetKey("right"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Trueã«ã™ã‚‹
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA‰E‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ã‚‚ã—ã€å³ãŒé›¢ã‚ŒãŸãªã‚‰ãªã‚‰
         if (Input.GetKeyUp("right"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Falseã«ã™ã‚‹
             anim.SetBool("Boolswim", false);
         }
 
-        //‚à‚µA¶‚ª‰Ÿ‚³‚ê‚½‚ç‚È‚ç
+        //ã‚‚ã—ã€å·¦ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãªã‚‰
         if (Input.GetKey("left"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğTrue‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Trueã«ã™ã‚‹
             anim.SetBool("Boolswim", true);
         }
 
-        //‚à‚µA¶‚ª—£‚ê‚½‚È‚ç‚È‚ç
+        //ã‚‚ã—ã€å·¦ãŒé›¢ã‚ŒãŸãªã‚‰ãªã‚‰
         if (Input.GetKeyUp("left"))
         {
-            //BoolŒ^‚Ìƒpƒ‰ƒ[ƒ^[‚Å‚ ‚éBoolswim‚ğFalse‚É‚·‚é
+            //Boolå‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã§ã‚ã‚‹Boolswimã‚’Falseã«ã™ã‚‹
             anim.SetBool("Boolswim", false);
+        }
+
+        // ä¸Šä¸‹ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å–å¾—
+        float vertical = Input.GetAxis("Vertical");
+         // ç¾åœ¨ã®GameObjectã®Xè»¸æ–¹å‘ã®è§’åº¦ã‚’å–å¾—
+        float currentXAngle = transform.eulerAngles.x;
+        // ç¾åœ¨ã®è§’åº¦ãŒ180ã‚ˆã‚Šå¤§ãã„å ´åˆ
+        if (currentXAngle > 180)
+        {
+            // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯è§’åº¦ã¯0ï½360ãªã®ã§-180ï½180ã¨ãªã‚‹ã‚ˆã†ã«è£œæ­£
+            currentXAngle = currentXAngle - 360;
+        }
+        // (ç¾åœ¨ã®è§’åº¦ãŒæœ€å°è§’åº¦ä»¥ä¸Šã‹ã¤ã‚­ãƒ¼å…¥åŠ›ãŒ0æœªæº€(ä¸‹ã‚­ãƒ¼æŠ¼ä¸‹)) ã¾ãŸã¯ (ç¾åœ¨ã®è§’åº¦ãŒæœ€å¤§è§’åº¦ä»¥ä¸‹ã‹ã¤ã‚­ãƒ¼å…¥åŠ›ãŒ0ã‚ˆã‚Šå¤§ãã„(ä¸Šã‚­ãƒ¼æŠ¼ä¸‹))ã®æ™‚
+        if ((currentXAngle >= MinAngle && vertical > 0) || (currentXAngle <= MaxAngle && vertical < 0))
+        {
+            // Xè»¸ã‚’åŸºæº–ã«å›è»¢ã•ã›ã‚‹
+            transform.Rotate(new Vector3(-vertical * rotationSpeed, 0, 0));
         }
 
     }

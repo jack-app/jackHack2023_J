@@ -1,0 +1,162 @@
+Script started on 2023-05-03 16:23:13+09:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="157" LINES="57"]
+/home/ayu-mushi/.zshrc:75: command not found: direnv
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J(base) ayumushi-IStNEi-14FH120% [K[?2004h[0m[27m[24m[J<INS>[00m[36m[Assets@ayumushi-IStNEi-14FH120]% [00m[Kscripts[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Assets@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Assets@ayumushi-IStNEi-14FH120]% [00m[KScenes/[1Creenshot\ from\ 2020-06-04\ 18-47-47.png[39Dipt                                    [38D[1C[1Cs/[?1l>[?2004l
+BeamController.cs       BulletController.cs       EnemyController.cs       FishComponent.cs       PlayerController.cs
+BeamController.cs.meta  BulletController.cs.meta  EnemyController.cs.meta  FishComponent.cs.meta  PlayerController.cs.meta
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Knvim Assets/Alstra\ Infinite/Fish\ -\ PolyPack.meta[50D[1C[1C[1C[1CPkenkyu.txt                                   [45DlayerController.cs[17D[1C[?1l>[?2004l
+[?1049h[22;0;0t[22;0t[?1h=[H[2J]11;?[?2004h[?u[c[?25h[?25l[>4;2m(B[m[H[2J]112[2 q]112[2 q[?1002h[?1006h[?1004h[93musing(B[m System.Collections;[K
+[93musing(B[m System.Collections.Generic;[K
+[93musing(B[m UnityEngine;[K
+[K
+[38;5;121mpublic(B[m [38;5;121mclass(B[m [38;5;121mPlayerController (B[m[93m:(B[m MonoBehaviour[K
+{[K
+[K
+    [96m//===== (B[m[38;5;81m<92>(B[m[96mè[8;18H(B[m[38;5;81m<8b>(B[m[96m`(B[m[38;5;81m<97>(B[m[96mÌ(B[m[38;5;81m<88>(B[m[96mæ[8;33H =====(B[m[K
+    [38;5;121mprivate(B[m Animator anim;  [96m//Animator(B[m[38;5;81m<82>(B[m[96mð[9;44Hanim(B[m[38;5;81m<82>(B[m[96mÆ[9;53H(B[m[38;5;81m<82>(B[m[96m¢(B[m[38;5;81m<82>(B[m[96m¤[9;63H(B[m[38;5;81m<95>(B[m[96mÏ(B[m[38;5;81m<90><94><82>(B[m[96mÅ(B[m[38;5;81m<92>(B[m[96mè[9;86H(B[m[38;5;81m<8b>(B[m[96m`(B[m[38;5;81m<82>(B[m[96m·[9;96H(B[m[38;5;81m<82>(B[m[96mé(B[m[9;101H[K
+[K
+[K
+    [96m//private float speed(B[m[K
+    [38;5;121mpublic(B[m [38;5;121mfloat(B[m speed;[K
+[K
+    [96m// Start is called before the first frame update(B[m[K
+    [38;5;121mvoid(B[m Start()[K
+    {[K
+        [96m//speed = 5f;(B[m[K
+[K
+        [96m//(B[m[38;5;81m<95>(B[m[96mÏ(B[m[38;5;81m<90><94>(B[m[96manim(B[m[38;5;81m<82>(B[m[96mÉ(B[m[38;5;81m<81>(B[m[96mAAnimator(B[m[38;5;81m<83>(B[m[96mR(B[m[38;5;81m<83><93><83>(B[m[96m|(B[m[38;5;81m<81>(B[m[96m[(B[m[38;5;81m<83>(B[m[96ml(B[m[38;5;81m<83><93><83>(B[m[96mg(B[m[38;5;81m<82>(B[m[96mð[20;92H(B[m[38;5;81m<90>(B[m[96mÝ(B[m[38;5;81m<92>(B[m[96mè[20;102H(B[m[38;5;81m<82>(B[m[96m·[20;107H(B[m[38;5;81m<82>(B[m[96mé(B[m[20;112H[K
+        anim [93m=(B[m gameObject.GetComponent<Animator>();[K
+    }[K
+[K
+    [96m// Update is called once per frame(B[m[K
+    [38;5;121mvoid(B[m Update()[K
+    {[K
+        [96m//(B[m[38;5;81m<88>(B[m[96mÚ(B[m[38;5;81m<93>(B[m[96m®(B[m[27;21H[K
+        transform.position [93m+=(B[m [93mnew(B[m Vector3(Input.GetAxis([95m"Horizontal"(B[m) [93m*(B[m Time.deltaTime [93m*(B[m speed, [95m0f(B[m, [95m0f(B[m);[K
+        transform.position [93m+=(B[m [93mnew(B[m Vector3([95m0f(B[m, Input.GetAxis([95m"Vertical"(B[m) [93m*(B[m Time.deltaTime [93m*(B[m speed, [95m0f(B[m);[K
+[K
+        [96m//(B[m[38;5;81m<82>(B[m[96mà[31;16H(B[m[38;5;81m<82>(B[m[96mµ(B[m[38;5;81m<81>(B[m[96mA(B[m[38;5;81m<8f>(B[m[96mã(B[m[38;5;81m<82>(B[m[96mª[31;36H(B[m[38;5;81m<89><9f><82>(B[m[96m³[31;49H(B[m[38;5;81m<82>(B[m[96mê[31;54H(B[m[38;5;81m<82>(B[m[96m½[31;59H(B[m[38;5;81m<82>(B[m[96mç(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[K
+        [93mif(B[m (Input.GetKey([95m"up"(B[m))[K
+        {[K
+            [96m//Bool(B[m[38;5;81m<8c>(B[m[96m^(B[m[38;5;81m<82>(B[m[96mÌ(B[m[38;5;81m<83>(B[m[96mp(B[m[38;5;81m<83><89><83><81><81>(B[m[96m[(B[m[38;5;81m<83>(B[m[96m^(B[m[38;5;81m<81>(B[m[96m[(B[m[38;5;81m<82>(B[m[96mÅ(B[m[38;5;81m<82>(B[m[96m (B[m[38;5;81m<82>(B[m[96mé[34;80HBoolswim(B[m[38;5;81m<82>(B[m[96mð[34;93HTrue(B[m[38;5;81m<82>(B[m[96mÉ(B[m[38;5;81m<82>(B[m[96m·[34;107H(B[m[38;5;81m<82>(B[m[96mé(B[m[34;112H[K
+            anim.SetBool([95m"Boolswim"(B[m, [95mtrue(B[m);[K
+[K
+            transform.rotate [93m+=(B[m [93mnew(B[m Vector3([95m0(B[m, [95m0(B[m, [95m3(B[m);[K
+        }[K
+[K
+        [96m//(B[m[38;5;81m<82>(B[m[96mà[40;16H(B[m[38;5;81m<82>(B[m[96mµ(B[m[38;5;81m<81>(B[m[96mA(B[m[38;5;81m<8f>(B[m[96mã(B[m[38;5;81m<82>(B[m[96mª[40;36H(B[m[38;5;81m<97>(B[m[96m£(B[m[38;5;81m<82>(B[m[96mê[40;46H(B[m[38;5;81m<82>(B[m[96m½[40;51H(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[K
+        [93mif(B[m (Input.GetKeyUp([95m"up"(B[m))[K
+        {[K
+            [96m//Bool(B[m[38;5;81m<8c>(B[m[96m^(B[m[38;5;81m<82>(B[m[96mÌ(B[m[38;5;81m<83>(B[m[96mp(B[m[38;5;81m<83><89><83><81><81>(B[m[96m[(B[m[38;5;81m<83>(B[m[96m^(B[m[38;5;81m<81>(B[m[96m[(B[m[38;5;81m<82>(B[m[96mÅ(B[m[38;5;81m<82>(B[m[96m (B[m[38;5;81m<82>(B[m[96mé[43;80HBoolswim(B[m[38;5;81m<82>(B[m[96mð[43;93HFalse(B[m[38;5;81m<82>(B[m[96mÉ(B[m[38;5;81m<82>(B[m[96m·[43;108H(B[m[38;5;81m<82>(B[m[96mé(B[m[43;113H[K
+            anim.SetBool([95m"Boolswim"(B[m, [95mfalse(B[m);[K
+        }[K
+[K
+        [96m//(B[m[38;5;81m<82>(B[m[96mà[47;16H(B[m[38;5;81m<82>(B[m[96mµ(B[m[38;5;81m<81>(B[m[96mA(B[m[38;5;81m<89>(B[m[96mº[47;31H(B[m[38;5;81m<82>(B[m[96mª[47;36H(B[m[38;5;81m<89><9f><82>(B[m[96m³[47;49H(B[m[38;5;81m<82>(B[m[96mê[47;54H(B[m[38;5;81m<82>(B[m[96m½[47;59H(B[m[38;5;81m<82>(B[m[96mç(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[K
+        [93mif(B[m (Input.GetKey([95m"down"(B[m))[K
+        {[K
+            [96m//Bool(B[m[38;5;81m<8c>(B[m[96m^(B[m[38;5;81m<82>(B[m[96mÌ(B[m[38;5;81m<83>(B[m[96mp(B[m[38;5;81m<83><89><83><81><81>(B[m[96m[(B[m[38;5;81m<83>(B[m[96m^(B[m[38;5;81m<81>(B[m[96m[(B[m[38;5;81m<82>(B[m[96mÅ(B[m[38;5;81m<82>(B[m[96m (B[m[38;5;81m<82>(B[m[96mé[50;80HBoolswim(B[m[38;5;81m<82>(B[m[96mð[50;93HTrue(B[m[38;5;81m<82>(B[m[96mÉ(B[m[38;5;81m<82>(B[m[96m·[50;107H(B[m[38;5;81m<82>(B[m[96mé(B[m[50;112H[K
+            anim.SetBool([95m"Boolswim"(B[m, [95mtrue(B[m);[K
+        }[K
+[K
+        [96m//(B[m[38;5;81m<82>(B[m[96mà[54;16H(B[m[38;5;81m<82>(B[m[96mµ(B[m[38;5;81m<81>(B[m[96mA(B[m[38;5;81m<89>(B[m[96mº[54;31H(B[m[38;5;81m<82>(B[m[96mª[54;36H(B[m[38;5;81m<97>(B[m[96m£(B[m[38;5;81m<82>(B[m[96mê[54;46H(B[m[38;5;81m<82>(B[m[96m½[54;51H(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[38;5;81m<82>(B[m[96mÈ(B[m[38;5;81m<82>(B[m[96mç(B[m[K
+        [93mif(B[m (Input.GetKeyUp([95m"down"(B[m))[K
+(B[0;1;7mPlayerController.cs                                                                                                                        1,1            Top[H[?25h[?25l[57;147H(B[mj[9X[H[?25h[?25l[57;147H [56;140H(B[0;1;7m2[54A[?25h[?25l[57;147H(B[mj[55A[?25h[?25l[57;147H [56;140H(B[0;1;7m3[53A[?25h[?25l[57;147H(B[mj[54A[?25h[?25l[57;147H [56;140H(B[0;1;7m4,0-1[52A[?25h[?25l[57;147H(B[m/[53A[?25h[?25l[53B[J/]112[2 q[?1002l[?1006l[?25h[?25lr[?25h[?25l[2;30H[30m[103mr[5;19H(B[0;7m[38;5;121mr(B[m[38;5;121mCont(B[m[30m[103mr(B[m[38;5;121molle(B[m[30m[103mr(B[m[38;5;121m (B[m[93m:(B[m MonoBehaviou[30m[103mr[9;6Hr(B[m[38;5;121mivate(B[m Animato[30m[103mr(B[m anim;  [96m//Animato(B[m[30m[103mr[12;8Hr[15;11Hr(B[m[96mt is called befo(B[m[30m[103mr(B[m[96me the fi(B[m[30m[103mr(B[m[96mst f(B[m[30m[103mr[16;13Hr[20;45Hr[21;47Hr[24;32Hr(B[m[96m f(B[m[30m[103mr[28;10Hr(B[mansfo[30m[103mr(B[mm.position [93m+=(B[m [93mnew(B[m Vecto[30m[103mr(B[m3(Input.GetAxis([95m"Ho(B[m[30m[103mr[29;10Hr(B[mansfo[30m[103mr(B[mm.position [93m+=(B[m [93mnew(B[m Vecto[30m[103mr(B[m3([95m0f(B[m, Input.GetAxis([95m"Ve(B[m[30m[103mr[34;94Hr[35;39Hr[37;14Hr(B[mansfo[30m[103mr(B[mm.[30m[103mr(B[motate [93m+=(B[m [93mnew(B[m Vecto[30m[103mr[50;94Hr[51;39Hr[56;140H(B[0;1;7m5,19 [57;3H[?25h[?25l(B[mo[?25h[?25l[2;30Hr[5;19H[38;5;121mrCont(B[0;7m[38;5;121mro(B[m[38;5;121mller (B[m[93m:(B[m MonoBehaviour[9;6H[38;5;121mrivate(B[m Animator anim;  [96m//Animator[12;8Hr[15;11Hrt is called before the first fr[16;13H(B[mr[20;45H[96mr[21;47H(B[mr[24;32H[96mr fr[28;10H(B[mransform.position [93m+=(B[m [93mnew(B[m Vector3(Input.GetAxis([95m"Hor[29;10H(B[mransform.position [93m+=(B[m [93mnew(B[m Vector3([95m0f(B[m, Input.GetAxis([95m"Ver[34;94H(B[m[96mr[35;39H(B[m[95mr[37;14H(B[mransform.[30m[103mro(B[mtate [93m+=(B[m [93mnew(B[m Vector[50;94H[96mr[51;39H(B[m[95mr[56;142H(B[0;1;7m24[57;4H[?25h[?25l(B[mt[?25h[?25l[5;24H[38;5;121mro[37;23H(B[0;7mrot[56;140H(B[0;1;7m37,23[57;5H[?25h[?25l(B[ma[?25h[?25l[37;26H(B[0;7ma[57;6H[?25h[?25l(B[mt[?25h[?25l[37;27H(B[0;7mt[57;7H[?25h[?25l(B[me[?25h[?25l[37;28H(B[0;7me[57;8H[?25h[?25l[57;1H[?25h[?25l]112[2 q[?1002h[?1006h[?25h[?25l[139C(B[m[1/1][1;7H[38;5;81mSystem(B[m.[38;5;81mCollections[2;7HSystem(B[m.[38;5;81mCollections(B[m.[38;5;81mGeneric[3;7H(B[0;1m[96mUnityEngine[5;33HMonoBehaviour[9;13HAnimator(B[m (B[0;1m[96manim[13;18Hspeed[16;10HStart[21;9Hanim(B[m [93m=(B[m (B[0;1m[96mgameObject(B[m.(B[0;1m[96mGetComponent(B[m<(B[0;1m[96mAnimator[25;10HUpdate[28;9Htransform(B[m.(B[0;1m[96mposition(B[m [93m+=(B[m [93mnew(B[m (B[0;1m[96mVector3(B[m((B[0;1m[96mInput(B[m.(B[0;1m[96mGetAxis(B[m([95m"Horizontal"(B[m) [93m*(B[m (B[0;1m[96mTime(B[m.(B[0;1m[96mdeltaTime(B[m [93m*(B[m (B[0;1m[96mspeed[29;9Htransform(B[m.(B[0;1m[96mposition(B[m [93m+=(B[m [93mnew(B[m (B[0;1m[96mVector3(B[m([95m0f(B[m, (B[0;1m[96mInput(B[m.(B[0;1m[96mGetAxis(B[m([95m"Vertical"(B[m) [93m*(B[m (B[0;1m[96mTime(B[m.(B[0;1m[96mdeltaTime(B[m [93m*(B[m (B[0;1m[96mspeed[32;13HInput(B[m.(B[0;1m[96mGetKey[35;13Hanim(B[m.(B[0;1m[96mSetBool[37;13Htransform(B[m.(B[0;1m[30m[103mrotate(B[m [93m+=(B[m [93mnew(B[m (B[0;1m[96mVector3[41;13HInput(B[m.(B[0;1m[96mGetKeyUp[44;13Hanim(B[m.(B[0;1m[96mSetBool[48;13HInput(B[m.(B[0;1m[96mGetKey[51;13Hanim(B[m.(B[0;1m[96mSetBool[55;13HInput(B[m.(B[0;1m[96mGetKeyUp[37;23H[?25h[?25l[20B(B[mLoaded server for /home/ayu-mushi/My project (1)/My project (1).sln in 2.2s[64C[5X[37;23H[?25h[?25l[57;147Hj[37;23H[?25h[?25l[57;147H [33;9H[46m{[38;9H}[56;141H(B[0;1;7m8,9 [38;9H[?25h[?25l[3;7H(B[m[38;5;81mUnityEngine[5;33H(B[m[38;5;121mMonoBehaviour[9;13HAnimator[21;40HAnimator[28;35HVector3(B[m([38;5;121mInput(B[m.(B[0;1m[96mGetAxis(B[m([95m"Horizontal"(B[m) [93m*(B[m [38;5;121mTime[29;35HVector3(B[m([95m0f(B[m, [38;5;121mInput(B[m.(B[0;1m[96mGetAxis(B[m([95m"Vertical"(B[m) [93m*(B[m [38;5;121mTime[32;13HInput[37;37HVector3[41;13HInput[48;13HInput[55;13HInput[38;9H[?25h[?25l[57;147H(B[mk[38;9H[?25h[?25l[57;147H [33;9H{[38;9H}[56;141H(B[0;1;7m7,23[37;23H[?25h[?25l[57;147H(B[m^[37;23H[?25h[?25l[57;147H [56;143H(B[0;1;7m1[37;13H[?25h[?25l[57;147H(B[m^[37;13H[?25h[?25l[57;147H [37;13H[?25h[?25l[57;147H^[37;13H[?25h[?25l[57;147H [37;13H[?25h[?25l[57;147Hj[37;13H[?25h[?25l[57;147H [33;9H[46m{[38;9H}[56;141H(B[0;1;7m8,9 [38;9H[?25h[?25l[57;147H(B[mj[38;9H[?25h[?25l[57;147H [33;9H{[38;9H}[56;141H(B[0;1;7m9,0-1[17A[?25h[?25l[57;147H(B[mk[18A[?25h[?25l[57;147H [33;9H[46m{[38;9H}[56;141H(B[0;1;7m8,9  [38;9H[?25h[?25l[57;147H(B[mk[38;9H[?25h[?25l[57;147H [33;9H{[38;9H}[56;141H(B[0;1;7m7,13[37;13H[?25h[?25l[57;147H(B[m^[37;13H[?25h[?25l[57;147H [37;13H[?25h[?25l[57;147H^[37;13H[?25h[?25l[57;147H [37;13H[?25h[?25l[57;147H:[37;13H[?25h[?25l[20B[147X:]112[2 q[?1002l[?1006l[?25h[?25lq[?25h[?25l[57;1H[?25h[?25l]112[2 q[?1002h[?1006h[?25h[?25l]112[2 q[?1002l[?1006l(B[m[?25h[?1l>[>4;0m[?1049l[23;0;0t[23;0t[?2004l[?1004l[?25h[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00mgit status[9D[1C[1C[1Cmerge main [10D[1C[1C[1C[?1l>[?2004l
+Already up to date.
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Kgit merge main [14D[1C[1C[1Cdiff HEAD 0-dim [15D[1C[1C[1C[1C          [9D[?1l>[?2004l
+[?1049h[22;0;0t[?1h=[1mdiff --git a/Assets/Scripts/BulletController.cs b/Assets/Scripts/BulletController.cs[m[m
+[1mindex dfb97af..e70ff08 100644[m[m
+[1m--- a/Assets/Scripts/BulletController.cs[m[m
+[1m+++ b/Assets/Scripts/BulletController.cs[m[m
+[36m@@ -9,7 +9,7 @@[m [mpublic class BulletController : MonoBehaviour[m[m
+     // Start is called before the first frame update[m[m
+     void Start()[m[m
+     {[m[m
+[31m-        [m[m
+[32m+[m[32m        velocity = (1f, 0, 0)[m[m
+     }[m[m
+ [m[m
+     // Update is called once per frame[m[m
+[7m(END)[27m[K[K[?1l>[?1049l[23;0;0t[1m[7m%[27m[1m[0m                                                                                                                                                             ^[[A[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Kgit diff 
+[0mdiff       -- show changes between commits, commit and working tree, etc.
+diff-files -- compare files in working tree and index
+diff-index -- compare content and mode of blobs between index and repository
+diff-tree  -- compare content and mode of blobs found via two tree objects
+[Jdifftool   -- show changes using common diff tools[J[5A[0m[27m[24m[40Cgit diff[K 
+[J[A[49Corigin/[1C[1C[1Cin/ n/ in/ in/  in/       status[1C[?1l>[?2004l
+[JOn branch ayu-mushi-1
+Your branch is ahead of 'origin/ayu-mushi-1' by 13 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   BulletController.cs[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m../typescript[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Kgit status[9D[1C[1C[1Clog   [1C[?1l>[?2004l
+[?1049h[22;0;0t[?1h=[33mcommit 39c56d6d93fb32f574d9ca6f4210497f2d309991[m[33m ([m[1;36mHEAD -> [m[1;32mayu-mushi-1[m[33m)[m[m
+Merge: 43778de cf87a60[m
+Author: ayu-mushi <ayu.mushi2015@gmail.com>[m
+Date:   Wed May 3 16:22:32 2023 +0900[m
+[m
+    .[m
+[m
+[33mcommit 43778decaa4932b5be0458e48c295b46eaf55719[m[m
+Author: ayu-mushi <ayu.mushi2015@gmail.com>[m
+Date:   Wed May 3 16:03:18 2023 +0900[m
+[m
+    .[m
+[m
+[33mcommit cf87a608f53aa8074ffdb5f20ebbdb986fae6d3b[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m[m
+Merge: 8fdcc1e 52f35c9[m
+Author: taxi1729 <131862102+taxi1729@users.noreply.github.com>[m
+Date:   Wed May 3 16:02:51 2023 +0900[m
+[m
+    Merge pull request #4 from jack-app/taxi1729[m
+    [m
+    アニメーション開始と終了[m
+[m
+[33mcommit 52f35c9583bc87214ee29a876de487d2986f4600[m[m
+Author: taxi1729 <takorice.02200909@gmail.com>[m
+Date:   Wed May 3 15:59:57 2023 +0900[m
+[m
+    アニメーション開始と終了[m
+[m
+[33mcommit 08a0b9e377d0f37f24676882b9a95013dd729dce[m[m
+Merge: 80aa98b 8fdcc1e[m
+Author: ayu-mushi <ayu.mushi2015@gmail.com>[m
+Date:   Wed May 3 15:45:41 2023 +0900[m
+[m
+    merged[m
+[m
+[33mcommit 80aa98bc59a1902651695d0cf157c704285cf01d[m[m
+Author: ayu-mushi <ayu.mushi2015@gmail.com>[m
+Date:   Wed May 3 15:42:59 2023 +0900[m
+[m
+    .[m
+[m
+[33mcommit 8fdcc1e1684313134b5809cec05e785023b2f6ba[m[33m ([m[1;32mmaster[m[33m)[m[m
+Merge: a16292f ef29eff[m
+Author: ayu-mushi <ayu.mushi2015@gmail.com>[m
+Date:   Wed May 3 15:41:26 2023 +0900[m
+[m
+    Merge pull request #3 from jack-app/messie[m
+    [m
+    stage[m
+[m
+[33mcommit ef29effdb77e2e982df34b31a8c936b90e675461[m[33m ([m[1;31morigin/messie[m[33m)[m[m
+Author: messie <biscuit.m.1114@gmail.com>[m
+Date:   Wed May 3 15:32:51 2023 +0900[m
+[m
+    stage[m
+[m
+:[K[K[?1l>[?1049l[23;0;0t[1m[7m%[27m[1m[0m                                                                                                                                                             gi[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Kggit log[1C[1Cmerge main [10D[1C[1C[1C[1C[?1l>[?2004l
+Already up to date.
+[1m[7m%[27m[1m[0m                                                                                                                                                             [0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[K[?2004h[0m[27m[24m[J<INS>[00m[36m[Scripts@ayumushi-IStNEi-14FH120]% [00m[Kgit merge main [14D[1C[1C[1Ccommit -m "."[12Dheckout ayu-mushi-1[18D[1C[1C[1C[1C[1C[1C[1Cmain       [10Ditsuyoshi-dev [13D[P[13C [14Datsuyoshi-dev [13Din          [11D[1C[?1l>[?2004l
+error: Your local changes to the following files would be overwritten by checkout:
+	Assets/Scripts/BulletController.cs
+Please commit
