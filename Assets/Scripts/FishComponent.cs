@@ -44,6 +44,7 @@ public class FishComponent : MonoBehaviour
                 transform.position = new Vector3 (boundary_x, transform.position.y, transform.position.z);
             }
         }
-        fishHpBar.value = (((float)hp) / ((float)max_hp));
+        fishHpBar.maxValue = max_hp;
+        fishHpBar.value = hp;
     }
 }

@@ -21,6 +21,7 @@ public class RomantikItem : MonoBehaviour
         if(other == null){return;}
         if(other.gameObject.tag == "Ally"){
             Player.GetComponent<BeamController>().romantikGage += 1;
+            Debug.Log("romantic");
             Destroy(gameObject);
         }
     }
