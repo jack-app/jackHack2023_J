@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeamController : MonoBehaviour
 {
@@ -15,9 +16,11 @@ public class BeamController : MonoBehaviour
 
     public GameObject RomantikBeam;  // 生成するオブジェクトのプレハブ
     
-
-    private bool isGenerating = false;  // 生成中かどうかを示すフラグ
     private GameObject generatedRomaitik;  // 生成されたオブジェクトの参照
+
+    public int romantikGage = 0;
+    public Slider romantikBar;
+    public int romantikGageMax = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -60,25 +63,13 @@ public class BeamController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.B) && !isGenerating)
+        if (Input.GetKeyDown(KeyCode.B) && romantikGage>=3)
         {
             generatedRomaitik = Instantiate(RomantikBeam, transform.position, Quaternion.identity,Platerobject.transform);
-            // isGenerating = true;
+            romantikGage = 0;
         }
 
-        // if (generatedRomaitik != null)
-        // {
-        //     Vector3 position = generatedRomaitik.transform.position;
-        //     position.x += moveSpeed * Time.deltaTime;
-        //     generatedRomaitik.transform.position = position;
-        //     if(position.x > 150)
-        //     {
-        //         Destroy(generatedRomaitik);
-        //     }
-        // }
-        // else{
-        //     isGenerating = false;
-        // }
+        romantikBar.value = (((float)romantikGage) / ((float)romantikGageMax));
     }
     
 }
