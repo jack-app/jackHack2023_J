@@ -9,8 +9,7 @@ public class Beam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
-        romantik = GetComponent<BeamController>();
+
     }
 
     // Update is called once per frame
@@ -24,7 +23,6 @@ public class Beam : MonoBehaviour
         if(other.gameObject.tag == "Enemy"){
             if(other.gameObject.GetComponent<FishComponent>() == null) return;
             other.gameObject.GetComponent<FishComponent>().hp -= 15;
-            Player.GetComponent<BeamController>().romantikGage += 1;
             //Debug.Log(other.gameObject.GetComponent<FishComponent>().hp);
             //Debug.Log("hit");
         }
