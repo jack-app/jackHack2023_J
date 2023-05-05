@@ -146,3 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7e6a4006055a9eebaa4f26ef021fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  romantik: {fileID: 0}
+  Player: {fileID: 0}
+  Audio: {fileID: 4360741974542880632, guid: 440830b6de588cf4cb9a6fc561fe918a, type: 3}
