@@ -6,6 +6,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameObject target;
+    Vector3 startPosition;
 
     [SerializeField]
     [Tooltip("弾の速度")]
@@ -15,13 +16,14 @@ public class BulletController : MonoBehaviour
     {
         //velocity = new Vector3(-0.5f, 0f, 0f);
         target = GameObject.Find("Player");
+        startPosition = target.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         // 一定速度で動きつつ ターゲットに追従する
-        transform.Translate(velocity + (target.transform.position - transform.position)*0.01f);
+        transform.Translate(velocity + (startPosition - transform.position)*0.01f);
     }
 
     void OnCollisionEnter2d(Collision2D col){
@@ -39,6 +41,7 @@ public class BulletController : MonoBehaviour
         if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"){
             if(other.gameObject.GetComponent<FishComponent>() == null) return;
             other.gameObject.GetComponent<FishComponent>().hp -= 1;
+            Destroy(gameObject);
         }
     }
     //　カメラから外れた
