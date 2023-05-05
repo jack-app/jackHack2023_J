@@ -24,6 +24,7 @@ public class BeamController : MonoBehaviour
     {
         initialScale = NomalBeam.transform.localScale; // 四角形の初期サイズを取得
         initialPosition = NomalBeam.transform.position; // 四角形の初期位置を取得
+        Platerobject = gameObject;
     }
 
     // Update is called once per frame

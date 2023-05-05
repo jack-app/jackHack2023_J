@@ -15,13 +15,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     [Tooltip("撃つ弾")]
     public GameObject bullet;
-    FishComponent fishComponent;
+    FishComponent fish;
     public GameObject boundaryLine;
     private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
     // Start is called before the first frame update
     void Start()
     {
-        fishComponent = gameObject.GetComponent<FishComponent>();  
+        fish = gameObject.GetComponent<FishComponent>();  
+        boundaryLine = GameObject.Find("BoundaryLine");
     }
 
     // Update is called once per frame
@@ -32,14 +33,50 @@ public class EnemyController : MonoBehaviour
     float timeout = 2.0f;
 
     bool isInsideCamera; // カメラ内にいるかどうか
+
+
+
+    enum EnemyState {Searching, Approaching,};
+    EnemyState enemyState = EnemyState.Searching;
     void Update()
     {
-
         if(!isInsideCamera){return;} // もしカメラの範囲内にいないなら処理を終了
 
+        switch(enemyState){
+            case EnemyState.Searching:  //索敵
+                Search();
+                break;
+            case EnemyState.Approaching:  // 敵に接近
+                Approach();
+                break;
+        }
+    }
+
+
+    void Search(){ // 一定の方向に進みつつ回転しながら索敵
+        // Ally, Enemy
+        // Ray
+        // Ally と Enemyで回転が逆?
+        // カメラ内で索敵したい
+        RaycastHit hit;
+        fish.Move(Vector3.forward * Time.deltaTime * speed);
+        if(transform.eulerAngles.z > 30f){
+            transform.Rotate(0, 0, -1);
+        } else{
+            transform.Rotate(0, 0, 1);
+        }
+        Debug.DrawRay(gameObject.transform.position, new Vector3(1, 0, 0), Color.red, 6f);
+        if(Physics.Raycast(gameObject.transform.position, new Vector3(1, 0, 0),out hit, 6.0f)){
+           target = hit.collider.gameObject;
+           Debug.Log("aaaa");
+        }
+    }
+
+    void Approach(){ // 敵を追跡
+        if(target == null){ enemyState = EnemyState.Searching; return; } // 追跡対象が存在しなければ索敵モードに戻り処理を終了
         timeElapsed += Time.deltaTime;
         Vector3 r = new Vector3 (UnityEngine.Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
-        fishComponent.Move((target.transform.position - transform.position).normalized * speed * Time.deltaTime); // 索敵
+        fish.Move((target.transform.position - transform.position).normalized * speed * Time.deltaTime); // 索敵
     
         if(timeElapsed > timeout){ // 一定時間おきに弾を撃つ
             GameObject bullet_instance = Instantiate(bullet);
@@ -49,7 +86,7 @@ public class EnemyController : MonoBehaviour
             BulletController bc = bullet_instance.GetComponent<BulletController>();
             bc.velocity = (target.transform.position - transform.position).normalized * gunSpeed; // 弾のスピード
         }
-        if(fishComponent.isDead()){
+        if(fish.isDead()){
             var ct = _cancellationTokenSource.Token;
             transform.localScale = Vector3.zero;
             // 非同期メソッド実行
