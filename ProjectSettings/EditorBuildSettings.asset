@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SampleScene_ayu-mushi.unity
+    path: Assets/Scenes/ayu-mushiScene.unity
     guid: 8d92f5ef40f6f79a1bbdb71546ab6c29
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
