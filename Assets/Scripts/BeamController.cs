@@ -14,7 +14,7 @@ public class BeamController : MonoBehaviour
     private GameObject generatedNomal;
 
     public GameObject RomantikBeam;  // 生成するオブジェクトのプレハブ
-    public float moveSpeed = 1f;  // 動く速度
+    
 
     private bool isGenerating = false;  // 生成中かどうかを示すフラグ
     private GameObject generatedRomaitik;  // 生成されたオブジェクトの参照
@@ -63,22 +63,22 @@ public class BeamController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B) && !isGenerating)
         {
             generatedRomaitik = Instantiate(RomantikBeam, transform.position, Quaternion.identity,Platerobject.transform);
-            isGenerating = true;
+            // isGenerating = true;
         }
 
-        if (generatedRomaitik != null)
-        {
-            Vector3 position = generatedRomaitik.transform.position;
-            position.x += moveSpeed * Time.deltaTime;
-            generatedRomaitik.transform.position = position;
-            if(position.x > 150)
-            {
-                Destroy(generatedRomaitik);
-            }
-        }
-        else{
-            isGenerating = false;
-        }
+        // if (generatedRomaitik != null)
+        // {
+        //     Vector3 position = generatedRomaitik.transform.position;
+        //     position.x += moveSpeed * Time.deltaTime;
+        //     generatedRomaitik.transform.position = position;
+        //     if(position.x > 150)
+        //     {
+        //         Destroy(generatedRomaitik);
+        //     }
+        // }
+        // else{
+        //     isGenerating = false;
+        // }
     }
     
 }
