@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     public float speed = 10f;
-    public float gunSpeed = 0.8f;
+    public float gunSpeed;
 
     float timeElapsed; // 前回弾を撃ってからの経過時間
     float timeout = 2.0f;

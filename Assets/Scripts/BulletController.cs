@@ -5,7 +5,6 @@ using UnityEngine;
 // デフォルトでは右に飛ぶ
 public class BulletController : MonoBehaviour
 {
-
     [SerializeField]
     [Tooltip("弾の速度")]
     public float speed;
@@ -40,6 +39,7 @@ public class BulletController : MonoBehaviour
             || gameObject.tag=="Ally" && other.gameObject.tag == "Enemy"){
             if(other.gameObject.GetComponent<FishComponent>() == null) return; // 魚以外なら無視
             other.gameObject.GetComponent<FishComponent>().hp -= power; // 魚ならHPを1減らす
+            Destroy(gameObject);
         }
     }
     //　カメラから外れた
