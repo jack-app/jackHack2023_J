@@ -45,12 +45,13 @@ public class EnemyController : MonoBehaviour
         }
         else if (gameObject.CompareTag("Enemy")){
            fishDirection = Vector2.left; 
-        }else { Debug.Log("タグを設定してください"); }
+        }else { Debug.Log(gameObject.name+"タグを設定してください"); }
     }
 
     void Update()
     {
-        if(!isInsideCamera){return;} // もしカメラの範囲内にいないなら処理を終了
+        if(!isInsideCamera){ //Debug.Log("not inside of camera" + gameObject.name);
+        return;} // もしカメラの範囲内にいないなら処理を終了
 
         switch(enemyState){
             case EnemyState.Searching:  //索敵
