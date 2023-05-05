@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishComponent : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class FishComponent : MonoBehaviour
     [Tooltip("最大HP")]
     public int max_hp;
     GameObject boundaryLine;
+    public Slider fishHpBar;
     void Start()
     {
         hp = max_hp; // 最初のHPは最大値
         boundaryLine = GameObject.Find("BoundaryLine");
+        fishHpBar = gameObject.GetComponentInChildren<Slider>();
     }
 
     public void Move(Vector3 vec)
@@ -41,5 +44,6 @@ public class FishComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fishHpBar.value = (((float)hp) / ((float)max_hp));
     }
 }
