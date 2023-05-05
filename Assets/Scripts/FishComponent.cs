@@ -22,17 +22,7 @@ public class FishComponent : MonoBehaviour
 
     public void Move(Vector3 vec)
     {
-        float boundary_x = boundaryLine.transform.position.x;
-        float position_x = transform.position.x + vec.x;
-        float position_y = transform.position.y + vec.y;
-        if (gameObject.tag == "Ally"){
-            position_x = Mathf.Min(position_x + vec.x, boundary_x); // x座標がboundaryより右には行かない
-        } else if (gameObject.tag == "Enemy"){
-            position_x = Mathf.Max(position_x + vec.x, boundary_x); // x座標がboundaryより左には行かない
-        } else {
-            Debug.Log("想定外");
-        }
-        transform.position = new Vector3(position_x, position_y, transform.position.z);
+        transform.Translate(vec);
     }
 
     public bool isDead(){ // 死亡しているかを表す
@@ -41,5 +31,15 @@ public class FishComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float boundary_x = boundaryLine.transform.position.x;
+        if(gameObject.CompareTag("Ally")){
+            if(transform.position.x > boundary_x){
+                transform.position = new Vector3 (boundary_x, transform.position.y, transform.position.z);
+            }
+        } else if(gameObject.CompareTag("Enemy")){
+            if(transform.position.x < boundary_x){
+                transform.position = new Vector3 (boundary_x, transform.position.y, transform.position.z);
+            }
+        }
     }
 }

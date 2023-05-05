@@ -252,7 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1782507007}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!114 &60360894
@@ -488,7 +487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1782507007}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!58 &176485916
@@ -808,7 +806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1782507007}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!60 &389351200
@@ -955,9 +952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca40e583ed5f0a97b960717393501fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1782507007}
+  target: {fileID: 0}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!114 &446746649
@@ -1119,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d4384c34797caac97e216b2a84b529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 2
 --- !u!1 &555476921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1479,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1782507007}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!114 &909108940
@@ -1559,6 +1554,173 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eeac5b77be323c09b6677f59ce6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1552737030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -3.3997276
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.941048
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.7162
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_Name
+      value: SharkAlly
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+      propertyPath: m_TagString
+      value: Ally
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+--- !u!1 &1552737031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
+  m_PrefabInstance: {fileID: 1552737030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552737032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552737031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79eeac5b77be323c09b6677f59ce6597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1552737033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552737031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b0c238d0aa9aebeb1e59e80b8df30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  max_hp: 100
+--- !u!114 &1552737034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552737031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca40e583ed5f0a97b960717393501fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
+  speed: 10
+  gunSpeed: 2
+--- !u!61 &1552737035
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552737031}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.020836353, y: 0.2958555}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.869073, y: 1.8705173}
+  m_EdgeRadius: 0
+--- !u!50 &1552737036
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552737031}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1734090553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1722,11 +1884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca40e583ed5f0a97b960717393501fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1782507007}
+  target: {fileID: 0}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.01
+  gunSpeed: 0.8
 --- !u!114 &1747806693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,9 +1980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca40e583ed5f0a97b960717393501fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1782507007}
+  target: {fileID: 0}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!50 &1756418623
@@ -2159,7 +2319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1782507007}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
   gunSpeed: 0.8
 --- !u!114 &1846374784
@@ -2334,11 +2493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca40e583ed5f0a97b960717393501fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1782507007}
+  target: {fileID: 0}
   bullet: {fileID: 6103683602632598759, guid: 77f3c0cdb0e8b0621b1dbeb86cafb7df, type: 3}
-  boundaryLine: {fileID: 0}
   speed: 10
-  gunSpeed: 0.01
+  gunSpeed: 0.8
 --- !u!50 &2094590557
 Rigidbody2D:
   serializedVersion: 4

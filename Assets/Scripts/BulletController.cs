@@ -5,23 +5,23 @@ using UnityEngine;
 // デフォルトでは右に飛ぶ
 public class BulletController : MonoBehaviour
 {
-    public GameObject target;
 
     [SerializeField]
     [Tooltip("弾の速度")]
-    public Vector3 velocity;
+    public float speed;
+    public Vector3 direction;
+    public int power;
     // Start is called before the first frame update
     void Start()
     {
         //velocity = new Vector3(-0.5f, 0f, 0f);
-        target = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
         // 一定速度で動く
-        transform.Translate(velocity); //+ (target.transform.position - transform.position)*0.01f);
+        transform.Translate(direction * speed);
     }
 
     void OnCollisionEnter2d(Collision2D col){
@@ -36,9 +36,10 @@ public class BulletController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"){
+        if(gameObject.tag=="Enemy" && other.gameObject.tag == "Ally"  //敵の弾が味方に当たる、または味方の弾が敵に当たる
+            || gameObject.tag=="Ally" && other.gameObject.tag == "Enemy"){
             if(other.gameObject.GetComponent<FishComponent>() == null) return; // 魚以外なら無視
-            other.gameObject.GetComponent<FishComponent>().hp -= 1; // 魚ならHPを1減らす
+            other.gameObject.GetComponent<FishComponent>().hp -= power; // 魚ならHPを1減らす
         }
     }
     //　カメラから外れた
